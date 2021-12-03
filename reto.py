@@ -5,11 +5,14 @@ class Empleado:
 
     available_id = 1 
 
-    def __init__(self, name, surname):
+    def __init__(self, name, surname, pay=None):
         self.name = name
         self.surname = surname
         self.email = name + '.' + surname + '@email.com'
-        self.pay = random.randint(1500, 2200)
+        if pay is None:
+            self.pay = random.randint(1500, 2200)
+        else:
+            self.pay = pay
         self.id = Empleado.available_id
 
         Empleado.available_id += 1
@@ -29,8 +32,8 @@ class Empleado:
 
     @classmethod
     def from_string(cls,string):
-        name, surname = string.split(',')
-        return cls(name, surname)
+        name, surname, pay = string.split(',')
+        return cls(name, surname, pay)
 
 
 
@@ -44,16 +47,25 @@ class Empleado:
 
 #emp_x = Empleado('name', 'surname')
 
-emp_1 = Empleado('Sergio', 'Pesquera')
-emp_2 = Empleado('Miguel', 'Betegon')
-emp_3 = Empleado('Enrique', 'Pernia')
-Jaled = Empleado.from_string("Jaled, Moustafa")
+# emp_1 = Empleado('Sergio', 'Pesquera')
+# emp_2 = Empleado('Miguel', 'Betegon')
+# emp_3 = Empleado('Enrique', 'Pernia')
+# Jaled = Empleado.from_string("Jaled, Moustafa")
 
-print(emp_1)
-print(emp_2)
-print(emp_3)
-print(Jaled)
+# print(emp_1)
+# print(emp_2)
+# print(emp_3)
+# print(Jaled)
 
+with open('lista_empleados.txt', 'r') as lista:
+
+    new_list = []
+
+    lines = lista.readlines()
+    for line in lines:
+        new_list.append(Empleado.from_string(line))
+
+    print(new_list.__repr__())
 
 # print(emp_1.name, emp_1.surname,emp_1.email,emp_1.pay, emp_1.id)
 # print(emp_2.name, emp_2.surname,emp_2.email,emp_2.pay, emp_2.id)
