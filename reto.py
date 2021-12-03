@@ -19,6 +19,10 @@ class Empleado:
         return f'El empleado {self.name} {self.surname} cobra {self.pay}'
 
 
+    def __add__(self, other):
+        return self.pay + other.pay
+
+
     def pay_rise(self):
         self.pay = int(self.pay * 1.15)
 
