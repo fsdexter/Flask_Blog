@@ -59,13 +59,14 @@ class Empleado:
 
 with open('lista_empleados.txt', 'r') as lista:
 
-    new_list = []
-
     lines = lista.readlines()
-    for line in lines:
-        new_list.append(Empleado.from_string(line))
 
-    print(new_list.__repr__())
+    new_list = [Empleado.from_string(line) for line in lines ]
+
+    # for line in lines:
+    #     new_list.append(Empleado.from_string(line))
+
+    print(new_list)
 
 # print(emp_1.name, emp_1.surname,emp_1.email,emp_1.pay, emp_1.id)
 # print(emp_2.name, emp_2.surname,emp_2.email,emp_2.pay, emp_2.id)
