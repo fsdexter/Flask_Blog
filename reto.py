@@ -3,12 +3,16 @@ import random
 
 class Empleado:
 
+    available_id = 1 
+
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
         self.email = name + '.' + surname + '@email.com'
         self.pay = random.randint(1500, 2200)
+        self.id = Empleado.available_id
 
+        Empleado.available_id += 1
 
     def pay_rise(self):
         self.pay = int(self.pay * 1.15)
