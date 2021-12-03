@@ -34,6 +34,8 @@ class Empleado:
 
 
 
+
+
 '''
 **Sergio Pesquera**, 
 **Miguel Betegon**
@@ -67,3 +69,22 @@ print(Jaled)
 
 # jaled=Empleado("Jaled, Moustafa, 1600")
 
+
+class CEO(Empleado):
+
+    def __init__(self, name, surname, employee=None ):
+        super().__init__(name, surname)
+        if employee is None:
+            self.employee = []
+        else:
+            self.employee = employee
+
+    
+    def add_employee(self, employee):
+        if employee not in self.employee:
+            self.employee.append(employee)
+    
+    
+    def remove_employee(self, employee):
+        if employee in self.employee:
+            self.employee.remove(employee)
